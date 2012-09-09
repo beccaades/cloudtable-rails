@@ -7,7 +7,9 @@ class Locu
   end
 
   def self.find_menu_item_id name, venue_address
-    # RestClient.get "http://api.locu.com/v1_0/menu_item/search/?name=#{URI.encode(name)}&street_address=#{URI.encode(venue_address)}&api_key=#{API_KEY}")
+    # url = "http://api.locu.com/v1_0/menu_item/search/?name=#{URI.encode(name)}&street_address=#{URI.encode(venue_address)}&api_key=#{API_KEY}"
+    # puts "URL: #{url}"
+    # RestClient.get url
     false
   end
 

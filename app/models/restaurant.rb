@@ -32,7 +32,7 @@ class Restaurant < ActiveRecord::Base
             if section["subsections"].present?
               section["subsections"].each do |subsection|
                 section["section_name"] += " - #{section["subsection_name"]}" if section["subsection_name"].present?
-                section_object.subsections_items = []
+                section_object.items = []
 
                 if subsection["contents"].present?
                   subsection["contents"].each do |item|
@@ -40,7 +40,7 @@ class Restaurant < ActiveRecord::Base
                                                              :name => item["name"],
                                                              :price => item["price"])
                     subsection_item_obj.load_menu_item_id(self.address)
-                    section_object.subsections_items << subsection_item_obj
+                    section_object.items << subsection_item_obj
                   end
                 end
               end
