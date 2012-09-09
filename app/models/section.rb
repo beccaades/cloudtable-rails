@@ -1,6 +1,6 @@
 class Section
   
-  attr_accessor :name, :subsections
+  attr_accessor :name, :items
 
   def initialize(attributes = {})
     attributes.each do |name, value|

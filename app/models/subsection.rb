@@ -1,6 +1,6 @@
 class Subsection
 
-  attr_accessor :name, :subsection_items
+  attr_accessor :name, :items
 
   def initialize(attributes = {})
     attributes.each do |name, value|

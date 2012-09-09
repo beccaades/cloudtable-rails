@@ -4,12 +4,13 @@ class Restaurant < ActiveRecord::Base
   has_many :orders
 
   attr_accessible :venue_id
-  attr_accessor :api_response, :api_menus, :name
+  attr_accessor :api_response, :api_menus, :name, :address
 
   def load
     self.api_response ||= JSON.parse(Locu.find_venue(venue_id))
     
     self.name = api_response["objects"].first["name"]
+    self.address = api_response["objects"].first["street_address"]
     self.api_menus = api_response["objects"].first["menus"]
   end
 
@@ -22,31 +23,31 @@ class Restaurant < ActiveRecord::Base
         menu_object = Menu.new(:name => menu["menu_name"])
 
         if menu["sections"].present?
-          menu_object.sections = []
+          menu_object.subsections = []
 
           menu["sections"].each do |section|
-            section_object = Section.new(:name => section["section_name"])
-            section_object.subsections = []
+            subsection_name = section["section_name"]
+            subsection_object = Subsection.new
 
             if section["subsections"].present?
               section["subsections"].each do |subsection|
-                subsection_object = Subsection.new(:name => section["subsection_name"])
-                subsection_object.subsection_items = []
+                subsection_name += " - #{section["subsection_name"]}" if section["subsection_name"].present?
+                subsection_object.items = []
 
                 if subsection["contents"].present?
                   subsection["contents"].each do |item|
                     subsection_item_obj = SubsectionItem.new(:description => item["description"],
                                                              :name => item["name"],
                                                              :price => item["price"])
-                    subsection_object.subsection_items << subsection_item_obj
+                    subsection_item_obj.load_menu_item_id(self.address)
+                    subsection_object.items << subsection_item_obj
                   end
                 end
-
-                section_object.subsections << subsection_object
               end
             end
 
-            menu_object.sections << section_object
+            subsection_object.name = subsection_name
+            menu_object.subsections << subsection_object
           end
         end
         

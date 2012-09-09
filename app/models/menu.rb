@@ -1,6 +1,6 @@
 class Menu
   
-  attr_accessor :name, :sections
+  attr_accessor :name, :sections, :subsections
 
   def initialize(attributes = {})
     attributes.each do |name, value|
