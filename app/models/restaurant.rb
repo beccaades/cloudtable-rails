@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
 
   has_many :tables
+  has_many :orders
 
   attr_accessible :venue_id
   attr_accessor :api_response, :api_menus, :name
