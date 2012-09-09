@@ -1,8 +1,8 @@
 CloudtableRails::Application.routes.draw do
   resources :tables do
-    collection :from_token
+    get :from_token, :on => :collection
   end
   resources :restaurants
 
-  root :to => "restaurants#new"
+  root :to => "restaurants#index"
 end
