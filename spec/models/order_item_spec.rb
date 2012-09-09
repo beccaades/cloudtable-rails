@@ -38,6 +38,5 @@ describe OrderItem do
     order_item.quantity.should == 1
 
     OrderItem.count.should == 2
-    puts OrderItem.all.inspect
   end
 end

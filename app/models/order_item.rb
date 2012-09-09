@@ -8,15 +8,10 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
 
   def check_quantity
-    puts OrderItem.all.inspect
-    puts menu_item_id
-    puts OrderItem.find_by_menu_item_id(menu_item_id)
     order_item = OrderItem.find_by_menu_item_id(menu_item_id)
     if order_item.present?
       order_item.update_attribute(:quantity, order_item.quantity += 1)
-    else
-      puts "lalal"
-      errors.add(:base, "error")
+      return false
     end
   end
 end
