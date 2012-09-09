@@ -23,16 +23,16 @@ class Restaurant < ActiveRecord::Base
         menu_object = Menu.new(:name => menu["menu_name"])
 
         if menu["sections"].present?
-          menu_object.sections = []
+          menu_object.subsections = []
 
           menu["sections"].each do |section|
-            section_name = section["section_name"]
-            section_object = Section.new
+            subsection_name = section["section_name"]
+            subsection_object = Subsection.new
 
             if section["subsections"].present?
               section["subsections"].each do |subsection|
-                section["section_name"] += " - #{section["subsection_name"]}" if section["subsection_name"].present?
-                section_object.items = []
+                subsection_name += " - #{section["subsection_name"]}" if section["subsection_name"].present?
+                subsection_object.items = []
 
                 if subsection["contents"].present?
                   subsection["contents"].each do |item|
@@ -40,14 +40,14 @@ class Restaurant < ActiveRecord::Base
                                                              :name => item["name"],
                                                              :price => item["price"])
                     subsection_item_obj.load_menu_item_id(self.address)
-                    section_object.items << subsection_item_obj
+                    subsection_object.items << subsection_item_obj
                   end
                 end
               end
             end
 
-            section_object.name = section_name
-            menu_object.sections << section_object
+            subsection_object.name = subsection_name
+            menu_object.subsections << subsection_object
           end
         end
         
