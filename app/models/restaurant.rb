@@ -10,4 +10,8 @@ class Restaurant < ActiveRecord::Base
     
     self.name = response["objects"].first["name"]
   end
+
+  def menus
+    
+  end
 end
