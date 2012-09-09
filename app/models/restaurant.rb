@@ -41,7 +41,7 @@ class Restaurant < ActiveRecord::Base
                     subsection_item_obj = SubsectionItem.new(:description => item["description"],
                                                              :name => item["name"],
                                                              :price => item["price"])
-                    subsection_item_obj.load_menu_item_id(self.address)
+                    # subsection_item_obj.load_menu_item_id(self.address)
                     subsection_object.items << subsection_item_obj
                   end
                 end
