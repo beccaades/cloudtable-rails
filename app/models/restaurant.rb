@@ -6,6 +6,8 @@ class Restaurant < ActiveRecord::Base
   attr_accessor :name
 
   def load
-    JSON.parse(Locu.find_venue(venue_id))
+    response = JSON.parse(Locu.find_venue(venue_id))
+    
+    self.name = response["objects"].first["name"]
   end
 end
