@@ -4,13 +4,15 @@ class Restaurant < ActiveRecord::Base
   has_many :orders
 
   attr_accessible :venue_id
-  attr_accessor :api_response, :api_menus, :name, :address
+  attr_accessor :api_response, :api_menus, :name, :address, :facebook_url
 
   def load
     self.api_response ||= JSON.parse(Locu.find_venue(venue_id))
     
     self.name = api_response["objects"].first["name"]
     self.address = api_response["objects"].first["street_address"]
+    self.facebook_url = api_response["objects"].first["facebook_url"]
+
     self.api_menus = api_response["objects"].first["menus"]
   end
 

@@ -1,3 +1,3 @@
 object resource
 
-attributes :id, :menus, :name
+attributes :id, :menus, :name, :facebook_url
