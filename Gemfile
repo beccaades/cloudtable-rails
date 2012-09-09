@@ -22,12 +22,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do 
+group :development, :test do 
   gem 'quiet_assets', "~> 1.0.1" 
-end
-
-group :test do
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
