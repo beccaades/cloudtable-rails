@@ -11,12 +11,15 @@ describe Rating do
     order = Order.create!
     order_2 = Order.create!
     order_item = order.add_item(123)
-    order_item_2 = order_2.add_item(123)
+    order_item_2 = order.add_item(321)
+    order_item_3 = order_2.add_item(123)
     
-    Rating.create! :menu_item_id => 123, :order_item_id => order_item.id, :rating => 3
-    Rating.create! :menu_item_id => 123, :order_item_id => order_item_2.id, :rating => 5
+    Rating.create! :menu_item_id => 123, :order_item_id => order_item.id,   :score => 3
+    Rating.create! :menu_item_id => 321, :order_item_id => order_item_2.id, :score => 1
+    Rating.create! :menu_item_id => 123, :order_item_id => order_item_3.id, :score => 5
 
     Rating.for(123).should == 4
+    Rating.for(321).should == 1
   end
 
 end
