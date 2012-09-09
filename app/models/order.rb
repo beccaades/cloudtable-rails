@@ -5,4 +5,12 @@ class Order < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :table
   belongs_to :user
+
+  def add_item
+    
+  end
+
+  def remove_item
+    
+  end
 end
