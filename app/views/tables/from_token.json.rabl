@@ -1,3 +1,5 @@
 object resource
 
-attributes :restaurant
+child :restaurant do
+  extends "restaurants/show"
+end
