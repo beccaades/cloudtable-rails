@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :restaurant_id, :status, :table_id
+  attr_accessible :restaurant_id, :status, :table_id, :user_id
 
   has_many :order_items
   belongs_to :restaurant
