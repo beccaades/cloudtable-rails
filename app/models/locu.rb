@@ -7,10 +7,15 @@ class Locu
   end
 
   def self.find_menu_item_id name, venue_address
-    # url = "http://api.locu.com/v1_0/menu_item/search/?name=#{URI.encode(name)}&street_address=#{URI.encode(venue_address)}&api_key=#{API_KEY}"
-    # puts "URL: #{url}"
-    # RestClient.get url
-    false
+    if name.present? && venue_address.present?
+      name = name.gsub("&", "")
+      venue_address = venue_address.gsub("&", "")
+      url = "http://api.locu.com/v1_0/menu_item/search/?name=#{URI.encode(name)}&street_address=#{URI.encode(venue_address)}&api_key=#{API_KEY}"
+      puts "URL: #{url}"
+      return RestClient.get url
+    else
+      false
+    end
   end
 
 end

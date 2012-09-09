@@ -10,7 +10,7 @@ class SubsectionItem
 
   def load_menu_item_id(venue_address)
     response = Locu.find_menu_item_id(name, venue_address)
-    self.menu_item_id = response["objects"].first["id"] if response.present?
+    self.menu_item_id = JSON.parse(response)["objects"].first["id"] if response.present?
   end
 
 end
