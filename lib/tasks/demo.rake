@@ -7,7 +7,8 @@ namespace :demo do
     restaurant_2 = Restaurant.create! :venue_id => "03d5e63900761ffbc948"
 
     Table.delete_all
-    Table.create!(:restaurant => restaurant, :token => 'abcde12345')
+    restaurant.tables.create!   :token => 'abcde12345'
+    restaurant_2.tables.create! :token => '1234512345'
   end
   
 end
