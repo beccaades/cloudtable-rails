@@ -25,3 +25,9 @@ end
 group :development do 
   gem 'quiet_assets', "~> 1.0.1" 
 end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'shoulda'
+end
