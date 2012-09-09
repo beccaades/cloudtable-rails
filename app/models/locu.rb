@@ -11,7 +11,6 @@ class Locu
       name = name.gsub("&", "")
       venue_address = venue_address.gsub("&", "")
       url = "http://api.locu.com/v1_0/menu_item/search/?name=#{URI.encode(name)}&street_address=#{URI.encode(venue_address)}&api_key=#{API_KEY}"
-      puts "URL: #{url}"
       return RestClient.get url
     else
       false
