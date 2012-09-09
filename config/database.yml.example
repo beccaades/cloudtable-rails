@@ -1,0 +1,22 @@
+base: &base
+  adapter: mysql2
+  username: root
+  password: 
+  host: 127.0.0.1
+  encoding: utf8
+
+development:
+  database: cloudtable_devel
+  <<: *base
+
+test:
+  database: cloudtable_test
+  <<: *base
+
+cucumber:
+  database: cloudtable_test
+  <<: *base
+
+production:
+  database: cloudtable
+  <<: *base
