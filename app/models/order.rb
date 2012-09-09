@@ -4,4 +4,5 @@ class Order < ActiveRecord::Base
   has_many :order_items
   belongs_to :restaurant
   belongs_to :table
+  belongs_to :user
 end
