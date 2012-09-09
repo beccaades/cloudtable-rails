@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'sass-rails', '~> 3.2.3'
+gem 'rest-client'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
