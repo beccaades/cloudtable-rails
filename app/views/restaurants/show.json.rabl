@@ -1,3 +1,3 @@
 object resource
 
-attributes :id, :menus
+attributes :id, :menus, :name
