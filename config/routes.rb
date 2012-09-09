@@ -7,6 +7,9 @@ CloudtableRails::Application.routes.draw do
     resources :order_items
   end
   resources :menu_items
+  resources :ratings do
+    get :from_menu_item, :on => :collection
+  end
 
   root :to => "restaurants#index"
 end
