@@ -10,4 +10,8 @@ class OrdersController < InheritedResources::Base
     @order.order_items.delete_at(params[:order_item][:id])
   end
 
+  def index
+    @orders = User.exists?(:uid => params[:uid]) ? User.find_by_uid(params[:uid]).orders : []
+    index!
+  end
 end
