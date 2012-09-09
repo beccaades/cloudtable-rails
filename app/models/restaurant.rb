@@ -34,16 +34,18 @@ class Restaurant < ActiveRecord::Base
 
                 if subsection["contents"].present?
                   subsection["contents"].each do |item|
-                    subsection_item_obj = SubsectionItem.new(:description => item["description"])
+                    subsection_item_obj = SubsectionItem.new(:description => item["description"],
+                                                             :name => item["name"],
+                                                             :price => item["price"])
                     subsection_object.subsection_items << subsection_item_obj
                   end
                 end
 
-                section_object.subsections << subsection
+                section_object.subsections << subsection_object
               end
             end
 
-            menu_object.sections << section
+            menu_object.sections << section_object
           end
         end
         
