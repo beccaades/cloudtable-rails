@@ -4,7 +4,7 @@ class TablesController < InheritedResources::Base
 
   def from_token
     @table = Table.find_by_token(params[:token]) if params[:token].present?
-    @table.orders.create!
+    @table.orders.create
   end
 
 end

@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(:version => 20120909075806) do
 
   create_table "order_items", :force => true do |t|
     t.integer  "order_id"
-    t.integer  "quantity"
+    t.integer  "quantity",     :default => 1
     t.string   "menu_item_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "orders", :force => true do |t|
